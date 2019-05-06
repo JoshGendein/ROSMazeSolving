@@ -37,7 +37,7 @@ def main():
     time.sleep(1)  # wait for node to initialize
 
     near_wall = 0  # start with 0, when we get to a wall, change to 1
-    distance = 0.2
+    distance = 0.4
 
     print("Turning...")
     command.angular.z = -0.5
@@ -50,7 +50,7 @@ def main():
             print("Moving towards a wall.")
             if(FRONT > distance and RIGHT > distance and LEFT > distance):  # Nothing there, go straight
                 command.angular.z = -0.1
-                command.linear.x = 0.15
+                command.linear.x = 0.22
             elif(LEFT < distance):
                 near_wall = 1
             else:
@@ -69,13 +69,13 @@ def main():
                 elif(LEFT > (distance * 0.75)):
                     print(
                         "Range: {:.2f}m - Wall-following; turn left.".format(LEFT))
-                    command.angular.z = 1.2
-                    command.linear.x = 0.15
+                    command.angular.z = 0.8
+                    command.linear.x = 0.22
                 else:
                     print(
                         "Range: {:.2f}m - Wall-following; turn right.".format(LEFT))
-                    command.angular.z = -1.2
-                    command.linear.x = 0.15
+                    command.angular.z = -0.8
+                    command.linear.x = 0.22
 
             else:  # 5
                 print("Front obstacle detected. Turning away.")
